@@ -2,12 +2,12 @@ import { TaskService } from "./task.service";
 import { AnyTask, Status, TaskId } from "./task.types";
 
 export class TaskController {
-    constructor(private taskService: TaskService) {}
+    constructor(private taskService: TaskService) { }
 
     public create(task: AnyTask): AnyTask {
         return this.taskService.createTask(task);
     }
-    
+
     public getById(id: TaskId): void {
         const task = this.taskService.getTaskById(id);
         if (task) {

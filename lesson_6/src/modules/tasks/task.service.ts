@@ -27,7 +27,7 @@ export class TaskService {
         if (updates.title !== undefined && updates.title.trim() === '') {
             throw new Error('Title cannot be empty.');
         }
-        
+
         Object.assign(task, updates);
         console.log(`Task "${task.title}" updated successfully.`);
         return task;
@@ -43,7 +43,7 @@ export class TaskService {
         console.log(`Task "${deletedTask[0]?.title}" deleted successfully.`);
         return true;
     }
-    
+
     public filterTasksByStatus(status: Status): AnyTask[] {
         return this.tasks.filter(task => task.status === status);
     }
