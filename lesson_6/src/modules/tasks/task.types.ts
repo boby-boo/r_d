@@ -65,7 +65,7 @@ export class Task {
     }
 }
 
-export class Subtask extends Task { 
+export class Subtask extends Task {
     parentTaskId: TaskId;
 
     constructor(data: Omit<Subtask, 'id' | 'createdAt' | 'getTaskInfo'>) {
