@@ -1,0 +1,86 @@
+[
+    {
+        "id": 0,
+        "title": "Task 1",
+        "description": "Task 1 description",
+        "createdAt": "2025-01-01",
+        "status": "todo",
+        "priority": "low",
+        "deadline": "2025-01-08"
+    },
+    {
+        "id": 1,
+        "title": "Task 2",
+        "description": "Task 2 description",
+        "createdAt": "2025-02-02",
+        "status": "in_progress",
+        "priority": "low",
+        "deadline": "December 1, 2025"
+    },
+    {
+        "id": "2",
+        "title": "Task 3",
+        "description": "Task 3 description",
+        "createdAt": "2025-03-03",
+        "status": "done",
+        "priority": "high",
+        "deadline": "September 1, 2024"
+    },
+    {
+        "id": 4,
+        "title": "Task 4",
+        "description": "Task 4 description",
+        "createdAt": "2025-04-04",
+        "status": "todo",
+        "deadline": "September 29, 2024"
+    },
+    {
+        "id": 5,
+        "title": "Task 5",
+        "description": "Task 5 description",
+        "createdAt": "2025-05-05",
+        "deadline": "November 2, 2025"
+    },
+    {
+        "id": "6",
+        "title": "Task 6",
+        "description": "Task 6 description",
+        "createdAt": "2025-06-06",
+        "status": "todo",
+        "priority": "high",
+        "deadline": "December 1, 2025"
+    },
+    {
+        "id": 7,
+        "title": "Task 7",
+        "description": "Task 7 description",
+        "createdAt": "2025-07-07",
+        "status": "in_progress",
+        "deadline": "December 1, 2025"
+    },
+    {
+        "id": 8,
+        "title": "Task 8",
+        "description": "Task 8 description",
+        "createdAt": "2025-08-08",
+        "status": "done",
+        "priority": "high",
+        "deadline": "December 1, 2025"  
+    },
+    {
+        "id": "9",
+        "title": "Task 9",
+        "description": "Task 9 description",
+        "createdAt": "2025-09-09",
+        "deadline": "December 1, 2025"
+    },
+    {
+        "id": 10,
+        "title": "Task 10",
+        "description": "Task 10 description",
+        "createdAt": "2025-10-10",
+        "status": "todo",
+        "priority": "medium",
+        "deadline": "December 1, 2025"
+    }
+]
