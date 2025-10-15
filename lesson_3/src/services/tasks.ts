@@ -1,12 +1,11 @@
 import { TaskPriority, TaskStatus } from '../constants';
-import type { Task, TaskNormalized } from '../dto/Task';
-import type { FindTaskById, GetTaskById, DeleteTask, UpdateTask, FilterTaskByStatus, CreateTask, CheckTaskDeadlineStatus } from '../dto/types';
+import type { Status, Task, TaskNormalized } from '../dto/Task';
 
-export const findTaskById: FindTaskById = (id, tasks) => {
-    return tasks.find((task) => String(task.id) === String(id)) as Task;
+export const findTaskById = (id: number, tasks: Task[]): Task | undefined => {
+    return tasks.find((task) => task.id === id) as Task;
 }
 
-export const getDetailsById: GetTaskById = (id, tasks) => {
+export const getDetailsById = (id: number, tasks: Task[]): void => {
     const task = findTaskById(id, tasks);
 
     if (task) {
@@ -27,8 +26,8 @@ export const getDetailsById: GetTaskById = (id, tasks) => {
     console.log(`Task ${id} not found`);
 }
 
-export const deleteTask: DeleteTask = (id, tasks) => {
-    const index = tasks.findIndex((task) => String(task.id) === String(id));
+export const deleteTask = (id: number, tasks: Task[]): void => {
+    const index = tasks.findIndex((task) => task.id === id);
     if (index !== -1) {
         tasks.splice(index, 1);
         console.log(`Task ${id} was deleted`);
@@ -37,23 +36,23 @@ export const deleteTask: DeleteTask = (id, tasks) => {
     }
 }
 
-export const updateTask: UpdateTask = (tasks, id, key, value) => {
+export const updateTask = (tasks: Task[], id: number, properties: Partial<Task>): void => {
     const task = findTaskById(id, tasks);
     if (task) {
-        task[key] = value;
+        Object.assign(task, properties);
         console.log(`Task ${id} updated`, task);
     } else {
         console.log(`Task ${id} not found`);
     }
 }
 
-export const filterTaskByStatus: FilterTaskByStatus = (status, tasks) => {
+export const filterTaskByStatus = (status: Status, tasks: Task[]) => {
     const filteredTasks = tasks.filter((task) => task.status === status);
     console.log(`Filtered Tasks`, filteredTasks);
 }
 
-export const createTask: CreateTask = (data, tasks) => {
-    const id = String(Date.now());
+export const createTask = (data: Omit<Task, 'id' | 'createdAt'>, tasks: TaskNormalized[]) => {
+    const id = Date.now();
     const createdAt = new Date().toISOString();
 
     const task: TaskNormalized = {
@@ -68,7 +67,7 @@ export const createTask: CreateTask = (data, tasks) => {
     tasks.push(task);
 };
 
-export const checkTaskDeadlineStatus: CheckTaskDeadlineStatus = (tasks, id) => {
+export const checkTaskDeadlineStatus = (tasks: TaskNormalized[], id: number) => {
     const task = findTaskById(id, tasks);
     if (!task) return;
 

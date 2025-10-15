@@ -24,11 +24,11 @@ export const validateAndNormalizeTasks = (raw: unknown[]): {
   raw.forEach((item, index) => {
     const t = item as Task;
 
-    if (t == null || typeof t !== 'object') {
+    if (t === null || typeof t !== 'object') {
       errors.push({ index, message: 'Not an object' });
       return;
     }
-    if (t.id == null) {
+    if (t.id === null) {
       errors.push({ index, message: 'Missing id' });
       return;
     }
@@ -40,11 +40,11 @@ export const validateAndNormalizeTasks = (raw: unknown[]): {
       errors.push({ index, message: 'Invalid or missing description' });
       return;
     }
-    if (t.createdAt == null) {
+    if (t.createdAt === null) {
       errors.push({ index, message: 'Missing createdAt' });
       return;
     }
-    if (t.deadline == null) {
+    if (t.deadline === null) {
       errors.push({ index, message: 'Missing deadline' });
       return;
     }

@@ -1,11 +1,10 @@
 import { TaskPriority, TaskStatus } from "../constants";
 
-export type TaskId = string | number;
 export type Status = typeof TaskStatus[keyof typeof TaskStatus];
 export type Priority = typeof TaskPriority[keyof typeof TaskPriority];
 
 export type Task = {
-    id: TaskId;
+    id: number
     title: string;
     description: string;
     createdAt: string | Date;

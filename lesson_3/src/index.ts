@@ -5,7 +5,7 @@ import { validateAndNormalizeTasks } from './utils/validate';
 
 const { valid: validatedTasks } = validateAndNormalizeTasks(tasks);
 
-updateTask(validatedTasks, 1, 'status', TaskStatus.DONE);
+updateTask(validatedTasks, 1, { status: TaskStatus.DONE, priority: TaskPriority.HIGH });
 
 createTask({
     title: 'NEW TEST TAK',

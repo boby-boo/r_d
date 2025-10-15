@@ -1,4 +1,4 @@
-import type { Task, TaskId } from './dto/Task';
+import type { Task } from './dto/Task';
 
 export const TaskStatus = {
     TODO: 'todo',
@@ -14,7 +14,7 @@ export const TaskPriority = {
 } as const
 
 export type UpdateTask = <K extends keyof Task>(
-    id: TaskId,
+    id: number,
     key: K,
     value: Task[K]
 ) => void;
