@@ -18,7 +18,7 @@
         "deadline": "December 1, 2025"
     },
     {
-        "id": "2",
+        "id": 2,
         "title": "Task 3",
         "description": "Task 3 description",
         "createdAt": "2025-03-03",
@@ -42,7 +42,7 @@
         "deadline": "November 2, 2025"
     },
     {
-        "id": "6",
+        "id": 6,
         "title": "Task 6",
         "description": "Task 6 description",
         "createdAt": "2025-06-06",
@@ -65,10 +65,10 @@
         "createdAt": "2025-08-08",
         "status": "done",
         "priority": "high",
-        "deadline": "December 1, 2025"  
+        "deadline": "December 1, 2025"
     },
     {
-        "id": "9",
+        "id": 9,
         "title": "Task 9",
         "description": "Task 9 description",
         "createdAt": "2025-09-09",
