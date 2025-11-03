@@ -1,0 +1,76 @@
+{
+  "tasks": [
+    {
+      "id": "78k2",
+      "title": "Learn Node.js",
+      "description": "Understand the Node.js runtime, its event loop, and asynchronous nature. Build a command-line application that interacts with the file system.",
+      "createdAt": "2025-06-06T16:00:00.000Z",
+      "status": "in_progress",
+      "priority": "high",
+      "deadline": "2025-12-01"
+    },
+    {
+      "id": "89k3",
+      "title": "Learn Express",
+      "description": "Create a RESTful API using the Express.js framework. Implement routing, middleware for authentication/logging, and handle different HTTP methods.",
+      "status": "done",
+      "priority": "high",
+      "createdAt": "2025-08-08T17:00:00.000Z",
+      "deadline": "2025-12-01"
+    },
+    {
+      "id": "90k4",
+      "title": "Learn MongoDB",
+      "description": "Learn the fundamentals of NoSQL databases with MongoDB. Understand collections and documents. Use Mongoose as an ODM to define schemas and models.",
+      "status": "in_progress",
+      "priority": "medium",
+      "createdAt": "2025-09-09T18:00:00.000Z",
+      "deadline": "2025-12-01"
+    },
+    {
+      "id": "101k5",
+      "title": "Learn Docker",
+      "description": "Get started with containerization. Write a Dockerfile for a Node.js application, build a Docker image, and run it as a container.",
+      "status": "todo",
+      "priority": "medium",
+      "createdAt": "2025-10-10T19:00:00.000Z",
+      "deadline": "2025-12-01"
+    },
+    {
+      "id": "c11a",
+      "title": "Write Unit Tests with Jest",
+      "description": "Set up the Jest testing framework. Write unit tests for several functions and React components, aiming for at least 80% test coverage.",
+      "status": "done",
+      "priority": "medium",
+      "createdAt": "2025-10-17T10:11:27.300Z",
+      "deadline": "2025-12-01"
+    },
+    {
+      "id": "34aa",
+      "title": "Set up CI/CD Pipeline",
+      "description": "Configure a basic Continuous Integration/Continuous Deployment pipeline using GitHub Actions to automatically run tests and build the project.",
+      "status": "todo",
+      "priority": "medium",
+      "createdAt": "2025-10-17T11:20:00.000Z",
+      "deadline": "2025-10-18"
+    },
+    {
+      "id": "022f",
+      "title": "Refactor CSS with a Preprocessor",
+      "description": "Learn the basics of a CSS preprocessor like Sass/SCSS. Refactor an existing project's CSS to use variables, nesting, and mixins.",
+      "status": "todo",
+      "priority": "low",
+      "createdAt": "2025-10-17T12:30:00.000Z",
+      "deadline": "2025-10-24"
+    },
+    {
+      "id": "4750",
+      "title": "Learn Kubernetes",
+      "description": "Understand the basics of container orchestration with Kubernetes. Learn about Pods, Services, and Deployments in a local cluster like Minikube.",
+      "createdAt": "2025-10-17T15:15:01.996Z",
+      "status": "todo",
+      "priority": "low",
+      "deadline": "2025-11-12"
+    }
+  ]
+}
