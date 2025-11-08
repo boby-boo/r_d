@@ -13,7 +13,7 @@ app.use(express.json());
 
 app.use('/tasks', taskRouter);
 
-app.use((req, res, next) => {
+app.use((req, _res, next) => {
   next(new HttpError(404, `${req.method} ${req.url} not found`));
 });
 

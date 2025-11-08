@@ -36,8 +36,8 @@ export const TaskSchema = z.object({
   title: z.string(),
   description: z.string(),
   createdAt: z.union([z.string(), z.date()]),
-  status: StatusSchema.optional(),
-  priority: PrioritySchema.optional(),
+  status: StatusSchema,
+  priority: PrioritySchema,
   deadline: z.union([z.string(), z.date()]),
 });
 
@@ -50,8 +50,8 @@ export const ValidationTaskSchema = z.object({
   description: z
     .string()
     .min(10, { message: 'Description must be at least 10 characters long' }),
-  status: StatusSchema.optional(),
-  priority: PrioritySchema.optional(),
+  status: StatusSchema,
+  priority: PrioritySchema,
   deadline: z
     .string()
     .refine((date) => {

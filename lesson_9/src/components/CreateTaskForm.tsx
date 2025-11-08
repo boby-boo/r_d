@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { ValidationTaskSchema, type Task } from "../types";
 import { getTaskById, postTask, updateTask } from "../services";
 import { useEffect } from "react";
+import { TaskStatus, TaskPriority} from "../types"
 
 type FormData = z.infer<typeof ValidationTaskSchema>;
 
@@ -21,8 +22,8 @@ const CreateTaskForm = ({ onAddTask, taskToEdit, onEditTask, onUpdateTask}: Crea
     defaultValues: {
       title: '',
       description: '',
-      status: 'todo',
-      priority: 'low',
+      status: TaskStatus.TODO,
+      priority: TaskPriority.LOW,
       deadline: new Date().toISOString().split('T')[0],
     },
   })

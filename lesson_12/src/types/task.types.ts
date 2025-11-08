@@ -29,8 +29,8 @@ export const TaskSchema = z.object({
   title: z.string(),
   description: z.string(),
   createdAt: z.string().datetime(),
-  status: StatusSchema.optional(),
-  priority: PrioritySchema.optional(),
+  status: StatusSchema,
+  priority: PrioritySchema,
   deadline: z.string().datetime()
 });
 
@@ -39,8 +39,8 @@ export type Task = z.infer<typeof TaskSchema>;
 export const CreateTaskSchema = z.object({
   title: z.string().min(2, 'Title must be at least 2 characters long'),
   description: z.string().min(10, 'Description must be at least 10 characters long'),
-  status: StatusSchema.optional(),
-  priority: PrioritySchema.optional(),
+  status: StatusSchema,
+  priority: PrioritySchema,
   deadline: z.string().datetime().refine((iso) => {
     const selected = new Date(iso);
     const now = new Date();
@@ -61,8 +61,8 @@ const MultiOrSingleEnum = (schema: z.ZodEnum<Record<string, string>>) =>
 
 export const TaskQuerySchema = z.object({
   createdAt: z.string().date().optional(),
-  status: MultiOrSingleEnum(StatusSchema).optional(),
-  priority: MultiOrSingleEnum(PrioritySchema).optional()
+  status: MultiOrSingleEnum(StatusSchema),
+  priority: MultiOrSingleEnum(PrioritySchema)
 });
 export type TaskQuery = z.infer<typeof TaskQuerySchema>;
 
