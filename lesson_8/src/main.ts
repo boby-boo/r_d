@@ -18,6 +18,9 @@ window.addEventListener('DOMContentLoaded', async () => {
   taskContainer.addEventListener('click', async (e) => {
     const target = e.target as HTMLButtonElement;
     const taskItem = target.closest<HTMLLIElement>('.task-item')!;
+
+    if (!taskItem) return;
+
     const id = taskItem.dataset.id!;
     const action = target.dataset.action!;
 

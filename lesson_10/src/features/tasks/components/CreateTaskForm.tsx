@@ -5,6 +5,7 @@ import { ValidationTaskSchema, type Task } from "../types";
 import { getTaskById, postTask, updateTask } from "../api";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { TaskStatus, TaskPriority} from "../types"
 
 type FormData = z.infer<typeof ValidationTaskSchema>;
 
@@ -15,7 +16,6 @@ type IdParams = {
 const CreateTaskForm = () => {
   const {id} = useParams<IdParams>();
   const navigate = useNavigate();
-  console.log(id)
   const [task, setTask] = useState<Task | null>(null);
 
   useEffect(() => {
@@ -27,8 +27,8 @@ const CreateTaskForm = () => {
       reset({
         title: '',
         description: '',
-        status: 'todo',
-        priority: 'low',
+        status: TaskStatus.TODO,
+        priority: TaskPriority.LOW,
         deadline: new Date().toISOString().split('T')[0],
       }, { keepErrors: false, keepDirty: false, keepTouched: false });
     }

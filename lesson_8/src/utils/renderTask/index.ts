@@ -16,8 +16,8 @@ export const renderTasks = (tasks: Task[]) => {
         <div class="task-description">${description}</div>
         <div class="task-info">
           <div class="task-created-at">Created at: <span>${formatDate(createdAt)}</span></div>
-          <div class="task-status">Status: <span class="status-${status}">${STATUS[status!]}</span></div>
-          <div class="task-priority">Priority: <span class="priority-${priority}">${PRIORITY[priority!]}</span></div>
+          <div class="task-status">Status: <span class="status-${status}">${STATUS[status]}</span></div>
+          <div class="task-priority">Priority: <span class="priority-${priority}">${PRIORITY[priority]}</span></div>
           <div class="task-deadline">Deadline: <span>${formatDate(deadline)}</span></div>
         </div>
         <div class="task-actions">

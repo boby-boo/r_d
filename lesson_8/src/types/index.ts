@@ -31,7 +31,7 @@ export type Task = {
     title: string;
     description: string;
     createdAt: string | Date;
-    status?: Status;
-    priority?: Priority;
+    status: Status;
+    priority: Priority;
     deadline: string | Date;
 }
