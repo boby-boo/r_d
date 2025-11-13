@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import type { Task } from '../../../shared/types';
+import type { Task } from '../types';
 import { getTaskById, deleteTask } from '../api';
 import { formatDate } from '../../../shared/utils/formatDate/index';
 import { PRIORITY, STATUS } from '../../../shared/constants';
@@ -66,10 +66,10 @@ const TaskDetailsPage = () => {
 
       <div className="task-info">
         <div className="task-status">
-          Status: <span className={`status-${status}`}>{STATUS[status!]}</span>
+          Status: <span className={`status-${status}`}>{STATUS[status]}</span>
         </div>
         <div className="task-priority">
-          Priority: <span className={`priority-${priority}`}>{PRIORITY[priority!]}</span>
+          Priority: <span className={`priority-${priority}`}>{PRIORITY[priority]}</span>
         </div>
         <div className="task-created-at">
           Created at: <span>{formatDate(createdAt)}</span>

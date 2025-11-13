@@ -8,27 +8,26 @@ const TaskListPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
+  const fetchTasks = async () => {
     setIsLoading(true);
     setError(null);
-    getTasks()
-      .then(setTasks)
-      .catch((error: Error) => setError(error.message))
-      .finally(() => setIsLoading(false));
-  }, []);
-
-  const handleDeleteTask = (id: string) => {
-    setTasks((prev) => prev.filter((task) => task.id !== id));
+    try {
+      const res = await getTasks();
+      setTasks(res);
+    } catch (error) {
+      if (error instanceof Error) setError(error.message);
+    } finally {
+      setIsLoading(false);
+    }
   };
+
+  useEffect(() => {
+    fetchTasks();
+  }, []);
 
   return (
     <div>
-      <TasksList
-        tasks={tasks}
-        onDeleteTask={handleDeleteTask}
-        isLoading={isLoading}
-        error={error}
-      />
+      <TasksList tasks={tasks} onDeleteTask={fetchTasks} isLoading={isLoading} error={error} />
     </div>
   );
 };
