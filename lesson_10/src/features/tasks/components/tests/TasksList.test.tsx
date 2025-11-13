@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import TasksList from "../TasksList";
 import type { Task } from "../../types";
 import { describe, it, expect, vi } from "vitest";
@@ -30,7 +30,7 @@ describe("TasksList", () => {
     },
   ];
 
-  it("renders list items correctly", () => {
+  it("should renders list items correctly", () => {
     const onDeleteTask = vi.fn();
     renderWithRouter(
       <TasksList tasks={mockTasks} onDeleteTask={onDeleteTask} isLoading={false} error={null} />
@@ -41,7 +41,7 @@ describe("TasksList", () => {
     expect(screen.getByText("Test Task 2")).toBeInTheDocument();
   });
 
-  it("shows empty state if no tasks", () => {
+  it("should shows empty state if no tasks", () => {
     renderWithRouter(
       <TasksList tasks={[]} onDeleteTask={vi.fn()} isLoading={false} error={null} />
     );
@@ -49,7 +49,7 @@ describe("TasksList", () => {
     expect(screen.getByText(/No tasks found/i)).toBeInTheDocument();
   });
 
-  it("shows error message on error", () => {
+  it("should shows error message on error", () => {
     renderWithRouter(
       <TasksList tasks={[]} onDeleteTask={vi.fn()} isLoading={false} error="Something went wrong" />
     );

@@ -19,17 +19,9 @@ export enum Method {
   DELETE = 'DELETE',
 };
 
-export const StatusSchema = z.enum([
-  TaskStatus.TODO,
-  TaskStatus.IN_PROGRESS,
-  TaskStatus.DONE,
-]);
+export const StatusSchema = z.enum(Object.values(TaskStatus));
 
-export const PrioritySchema = z.enum([
-  TaskPriority.LOW,
-  TaskPriority.MEDIUM,
-  TaskPriority.HIGH,
-]);
+export const PrioritySchema = z.enum(Object.values(TaskPriority));
 
 export const TaskSchema = z.object({
   id: z.string(),

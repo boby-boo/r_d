@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import type { Task } from "../../../shared/types";
-import { getTaskById, deleteTask } from "../api";
+import { getTaskById } from "../api";
 import { formatDate } from "../../../shared/utils/formatDate/index";
 import { PRIORITY, STATUS } from "../../../shared/constants";
 
@@ -24,19 +24,8 @@ const TaskDetailsPage = () => {
     }
   }, [id]);
 
-  const handleEdit = () => {
-    navigate(`/update/${id}`);
-  };
-
-  const handleDelete = () => {
-    if (id && window.confirm("Are you sure you want to delete this task?")) {
-      deleteTask(id);
-      navigate('/');
-    }
-  };
-
   if (isLoading) {
-    return <div className="loader">Loading task details...</div>;
+    return <div>Loading task details...</div>;
   }
 
   if (!task) {
