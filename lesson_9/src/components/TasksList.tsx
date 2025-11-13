@@ -25,8 +25,8 @@ const TasksList = ({ tasks, onDeleteTask, onEditTask }: TasksListProps) => {
                 <div className="task-description">{description}</div>
                 <div className="task-info">
                 <div className="task-created-at">Created at: <span>{formatDate(createdAt)}</span></div>
-                <div className="task-status">Status: <span className={`status-${status}`}>{STATUS[status!]}</span></div>
-                <div className="task-priority">Priority: <span className={`priority-${priority}`}>{PRIORITY[priority!]}</span></div>
+                <div className="task-status">Status: <span className={`status-${status}`}>{STATUS[status]}</span></div>
+                <div className="task-priority">Priority: <span className={`priority-${priority}`}>{PRIORITY[priority]}</span></div>
                 <div className="task-deadline">Deadline: <span>{formatDate(deadline)}</span></div>
                 </div>
                 <div className="task-actions">

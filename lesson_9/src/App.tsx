@@ -9,32 +9,25 @@ function App() {
   const [taskToEdit, setTaskToEdit] = useState<Task | null>(null);
 
   useEffect(() => {
-    getTasks().then(tasks => {
-      setTasks(tasks);
-    });
+    fetchTasks();
+  }, []);
 
-  }, [])
-
-  const handleAddTask = (newTasks: Task[]) => {
-    setTasks(prev => [...prev, ...newTasks]);
-  }
-
-  const handleDeleteTask = (id: string) => {
-    setTasks(prev => prev.filter(task => task.id !== id));
-  }
-
-  const handleEditTask = (id: string | null) => {
-    const task = tasks.find(t => t.id === id);
-
-    if (task) {
-      setTaskToEdit(task);
-    } else {
-      setTaskToEdit(null);
+  const fetchTasks = async () => {
+    try {
+      const res = await getTasks();
+      setTasks(res);
+    } catch (e) {
+      console.warn(e);
     }
   };
 
-  const handleUpdateTask = (updatedTask: Task) => {
-    setTasks(prev => prev.map(t => (t.id === updatedTask.id ? updatedTask : t)));
+  const handleEditTask = (id: string | null) => {
+    const task = tasks.find(t => t.id === id);
+    if (task) setTaskToEdit(task);
+  };
+
+  const handleUpdateTask = async () => {
+    await fetchTasks();
     setTaskToEdit(null);
   };
 
@@ -44,11 +37,11 @@ function App() {
         <div className="tasks-container">
           <TasksList 
             tasks={tasks} 
-            onDeleteTask={handleDeleteTask} 
+            onDeleteTask={fetchTasks} 
             onEditTask={handleEditTask}
           />
           <CreateTaskForm 
-            onAddTask={handleAddTask} 
+            onAddTask={fetchTasks} 
             taskToEdit={taskToEdit} 
             onEditTask={handleEditTask} 
             onUpdateTask={handleUpdateTask}

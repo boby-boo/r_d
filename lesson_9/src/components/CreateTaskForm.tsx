@@ -2,7 +2,7 @@ import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ValidationTaskSchema, type Task } from "../types";
-import { getTaskById, postTask, updateTask } from "../services";
+import { postTask, updateTask } from "../services";
 import { useEffect } from "react";
 import { TaskStatus, TaskPriority} from "../types"
 
@@ -52,9 +52,8 @@ const CreateTaskForm = ({ onAddTask, taskToEdit, onEditTask, onUpdateTask}: Crea
   }
 
   const handleUpdateTask = async (id: string, data: FormData) => {
-    const oldTask = await getTaskById(id);
     const updatedTask = await updateTask(id, {
-      ...oldTask,
+      ...taskToEdit,
       ...data,
     });
 
