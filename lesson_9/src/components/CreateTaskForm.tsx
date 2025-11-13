@@ -52,9 +52,7 @@ const CreateTaskForm = ({ onAddTask, taskToEdit, onEditTask, onUpdateTask}: Crea
   }
 
   const handleUpdateTask = async (id: string, data: FormData) => {
-    // const oldTask = await getTaskById(id);
     const updatedTask = await updateTask(id, {
-      // ...oldTask,
       ...taskToEdit,
       ...data,
     });
