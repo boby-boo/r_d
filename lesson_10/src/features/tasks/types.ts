@@ -19,25 +19,17 @@ export enum Method {
   DELETE = 'DELETE',
 };
 
-export const StatusSchema = z.enum([
-  TaskStatus.TODO,
-  TaskStatus.IN_PROGRESS,
-  TaskStatus.DONE,
-]);
+export const StatusSchema = z.enum(Object.values(TaskStatus));
 
-export const PrioritySchema = z.enum([
-  TaskPriority.LOW,
-  TaskPriority.MEDIUM,
-  TaskPriority.HIGH,
-]);
+export const PrioritySchema = z.enum(Object.values(TaskPriority));
 
 export const TaskSchema = z.object({
   id: z.string(),
   title: z.string(),
   description: z.string(),
   createdAt: z.union([z.string(), z.date()]),
-  status: StatusSchema.optional(),
-  priority: PrioritySchema.optional(),
+  status: StatusSchema,
+  priority: PrioritySchema,
   deadline: z.union([z.string(), z.date()]),
 });
 
@@ -50,8 +42,8 @@ export const ValidationTaskSchema = z.object({
   description: z
     .string()
     .min(10, { message: 'Description must be at least 10 characters long' }),
-  status: StatusSchema.optional(),
-  priority: PrioritySchema.optional(),
+  status: StatusSchema,
+  priority: PrioritySchema,
   deadline: z
     .string()
     .refine((date) => {

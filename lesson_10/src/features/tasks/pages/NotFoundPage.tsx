@@ -1,4 +1,3 @@
-// src/features/tasks/pages/NotFoundPage.tsx
 import { Link } from "react-router-dom";
 
 const NotFoundPage = () => {

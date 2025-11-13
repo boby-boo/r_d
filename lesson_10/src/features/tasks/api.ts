@@ -6,7 +6,7 @@ export const getTasks = async (): Promise<Task[]> => {
     try {
         const response = await fetch(API_URL);
         const tasks = await response.json();
-        return tasks.map(TaskSchema.parse);
+        return tasks;
     } catch (error) {
         console.error(error);
         throw new Error('Failed to fetch tasks');
@@ -17,7 +17,7 @@ export const getTaskById = async (id: string): Promise<Task> => {
     try {
         const response = await fetch(`${API_URL}/${id}`);
         const task = await response.json();
-        return TaskSchema.parse(task);
+        return task;
     } catch (error) {
         console.error(error);
         throw new Error('Failed to fetch Task');

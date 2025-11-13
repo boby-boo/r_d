@@ -6,18 +6,18 @@ import { useNavigate } from "react-router-dom";
 
 type TasksListProps = {
   tasks: Task[];
-  onDeleteTask: (id: string) => void;
   isLoading: boolean;
+  onDeleteTask: () => {};
   error: string | null;
 };
 
 const TasksList = ({ tasks, onDeleteTask, isLoading, error }: TasksListProps) => {
   const navigate = useNavigate();
 
-    const handleDelete = (id: string, e: React.MouseEvent<HTMLButtonElement>) => {
+    const handleDelete = async (id: string, e: React.MouseEvent<HTMLButtonElement>) => {
         e.stopPropagation();
-        deleteTask(id);
-        onDeleteTask(id);
+        await deleteTask(id);
+        await onDeleteTask();
     }
 
     const handleEditTask = (id: string, e: React.MouseEvent<HTMLButtonElement>) => {
@@ -47,8 +47,8 @@ const TasksList = ({ tasks, onDeleteTask, isLoading, error }: TasksListProps) =>
                 <div className="task-description">{description}</div>
                 <div className="task-info">
                 <div className="task-created-at">Created at: <span>{formatDate(createdAt)}</span></div>
-                <div className="task-status">Status: <span className={`status-${status}`}>{STATUS[status!]}</span></div>
-                <div className="task-priority">Priority: <span className={`priority-${priority}`}>{PRIORITY[priority!]}</span></div>
+                <div className="task-status">Status: <span className={`status-${status}`}>{STATUS[status]}</span></div>
+                <div className="task-priority">Priority: <span className={`priority-${priority}`}>{PRIORITY[priority]}</span></div>
                 <div className="task-deadline">Deadline: <span>{formatDate(deadline)}</span></div>
                 </div>
                 <div className="task-actions">
