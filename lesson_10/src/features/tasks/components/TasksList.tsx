@@ -1,6 +1,6 @@
 import { PRIORITY, STATUS } from "../../../shared/constants";
 import { deleteTask } from "../api";
-import type { Task } from "../types";
+import type { Task } from "../../../shared/types";
 import { formatDate } from "../../../shared/utils/formatDate/index";
 import { useNavigate } from "react-router-dom";
 
@@ -17,7 +17,7 @@ const TasksList = ({ tasks, onDeleteTask, isLoading, error }: TasksListProps) =>
     const handleDelete = async (id: string, e: React.MouseEvent<HTMLButtonElement>) => {
         e.stopPropagation();
         await deleteTask(id);
-        await onDeleteTask();
+        onDeleteTask();
     }
 
     const handleEditTask = (id: string, e: React.MouseEvent<HTMLButtonElement>) => {

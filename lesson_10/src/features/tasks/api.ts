@@ -1,6 +1,5 @@
-import { type Task, TaskSchema } from "./types";
+import { type Task, TaskSchema, Method } from "../../shared/types";
 import { API_URL } from "../../shared/constants"
-import { Method } from "./types";
 
 export const getTasks = async (): Promise<Task[]> => {
     try {
@@ -34,7 +33,7 @@ export const postTask = async (Task: Omit<Task, 'id'>): Promise<Task> => {
             body: JSON.stringify(Task),
         });
         const task = await response.json();
-        return TaskSchema.parse(task);
+        return task;
     } catch (error) {
         console.error(error);
         throw new Error('Failed to post Task');
@@ -61,7 +60,7 @@ export const updateTask = async (id: string, Task: Partial<Task>): Promise<Task>
             body: JSON.stringify(Task),
         });
         const updatedTask = await response.json();
-        return TaskSchema.parse(updatedTask);
+        return updatedTask;
     } catch (error) {
         console.error(error);
         throw new Error('Failed to update Task');
