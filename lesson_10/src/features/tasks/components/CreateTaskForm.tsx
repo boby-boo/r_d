@@ -1,11 +1,11 @@
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ValidationTaskSchema, type Task } from "../types";
+import { ValidationTaskSchema, type Task } from "../../../shared/types";
 import { getTaskById, postTask, updateTask } from "../api";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { TaskStatus, TaskPriority} from "../types"
+import { TaskStatus, TaskPriority} from "../../../shared/types"
 
 type FormData = z.infer<typeof ValidationTaskSchema>;
 
@@ -54,11 +54,11 @@ const CreateTaskForm = () => {
         status: task.status,
         priority: task.priority,
         deadline: new Date(task.deadline).toISOString().split('T')[0],
-      }, { keepErrors: false, keepDirty: false, keepTouched: false });
+      });
 
       trigger("deadline");
     }
-  }, [task, reset]);
+  }, [task, reset, trigger]);
 
   const onSubmit = async (data: FormData) => {
     if (task) {
@@ -81,7 +81,7 @@ const CreateTaskForm = () => {
   const handleAddTask = async (data: FormData) => {
     const taskData = {
       ...data,
-      createdAt: new Date().toISOString(),
+      createdAt: new Date(),
     };
 
     await postTask(taskData);

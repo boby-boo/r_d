@@ -17,7 +17,7 @@ const TasksList = ({ tasks, onDeleteTask, isLoading, error }: TasksListProps) =>
   const handleDelete = async (id: string, e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     await deleteTask(id);
-    await onDeleteTask();
+    onDeleteTask();
   };
 
   const handleEditTask = (id: string, e: React.MouseEvent<HTMLButtonElement>) => {

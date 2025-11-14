@@ -93,7 +93,7 @@ const CreateTaskForm = () => {
   const handleAddTask = async (data: FormData) => {
     const taskData = {
       ...data,
-      deadline: new Date(data.deadline).toISOString(),
+      deadline: new Date(data.deadline),
     };
 
     await postTask(taskData);
