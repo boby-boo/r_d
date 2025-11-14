@@ -36,11 +36,11 @@ const CreateTaskForm = ({ onAddTask, taskToEdit, onEditTask, onUpdateTask}: Crea
         status: taskToEdit.status,
         priority: taskToEdit.priority,
         deadline: new Date(taskToEdit.deadline).toISOString().split('T')[0],
-      }, { keepErrors: false, keepDirty: false, keepTouched: false });
+      });
 
       trigger("deadline");
     }
-  }, [taskToEdit, reset]);
+  }, [taskToEdit, reset, trigger]);
 
   const onSubmit = async (data: FormData) => {
     if (taskToEdit) {
@@ -63,7 +63,7 @@ const CreateTaskForm = ({ onAddTask, taskToEdit, onEditTask, onUpdateTask}: Crea
   const handleAddTask = async (data: FormData) => {
     const taskData = {
       ...data,
-      createdAt: new Date().toISOString(),
+      createdAt: new Date(),
     };
     const newTask = await postTask(taskData);
     onAddTask([newTask]);

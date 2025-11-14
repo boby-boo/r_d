@@ -10,8 +10,8 @@ type TasksListProps = {
 };
 
 const TasksList = ({ tasks, onDeleteTask, onEditTask }: TasksListProps) => {
-    const handleDelete = (id: string) => {
-        deleteTask(id);
+    const handleDelete = async (id: string) => {
+        await deleteTask(id);
         onDeleteTask(id);
     }
     

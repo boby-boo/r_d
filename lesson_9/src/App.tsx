@@ -32,7 +32,6 @@ function App() {
   };
 
   return (
-    <>
       <div className="container">
         <div className="tasks-container">
           <TasksList 
@@ -48,7 +47,6 @@ function App() {
           />
         </div>
       </div>
-    </>
   )
 }
 
