@@ -23,14 +23,6 @@ const CreateTaskForm = () => {
       getTaskById(id).then(task => {
         setTask(task);
       });
-    } else {
-      reset({
-        title: '',
-        description: '',
-        status: TaskStatus.TODO,
-        priority: TaskPriority.LOW,
-        deadline: new Date().toISOString().split('T')[0],
-      }, { keepErrors: false, keepDirty: false, keepTouched: false });
     }
   }, [id]);
 
