@@ -30,7 +30,7 @@ export function listTasks(query: TaskQuery): Task[] {
     result = result.filter((t) => (t.priority ? set.has(t.priority) : false));
   }
 
-  return result.map((task) => TaskSchema.parse(task));
+  return result;
 }
 
 export function getTaskById(id: string): Task {
@@ -41,17 +41,12 @@ export function getTaskById(id: string): Task {
 
 export function createTask(raw: unknown): Task {
   const data = CreateTaskSchema.parse(raw);
-  const now = new Date().toISOString();
 
-  const task: Task = TaskSchema.parse({
+  const task: Task = {
+    ...data,
     id: randomUUID(),
-    title: data.title,
-    description: data.description,
-    status: data.status,
-    priority: data.priority,
-    deadline: data.deadline,
-    createdAt: now,
-  });
+    createdAt: new Date(),
+  };
 
   tasks.push(task);
   return task;

@@ -12,26 +12,18 @@ export const TaskPriority = {
   HIGH: 'high',
 } as const;
 
-export const StatusSchema = z.enum([
-  TaskStatus.TODO,
-  TaskStatus.IN_PROGRESS,
-  TaskStatus.DONE,
-]);
+export const StatusSchema = z.enum(Object.values(TaskStatus));
 
-export const PrioritySchema = z.enum([
-  TaskPriority.LOW,
-  TaskPriority.MEDIUM,
-  TaskPriority.HIGH,
-]);
+export const PrioritySchema = z.enum(Object.values(TaskPriority));
 
 export const TaskSchema = z.object({
   id: z.string(),
   title: z.string(),
   description: z.string(),
-  createdAt: z.string().datetime(),
+  createdAt: z.coerce.date(),
   status: StatusSchema.optional(),
   priority: PrioritySchema.optional(),
-  deadline: z.string().datetime()
+  deadline: z.coerce.date()
 });
 
 export type Task = z.infer<typeof TaskSchema>;
@@ -41,7 +33,7 @@ export const CreateTaskSchema = z.object({
   description: z.string().min(10, 'Description must be at least 10 characters long'),
   status: StatusSchema.optional(),
   priority: PrioritySchema.optional(),
-  deadline: z.string().datetime().refine((iso) => {
+  deadline: z.coerce.date().refine((iso) => {
     const selected = new Date(iso);
     const now = new Date();
     return selected.getTime() >= new Date(
