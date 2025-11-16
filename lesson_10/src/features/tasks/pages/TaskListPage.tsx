@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getTasks } from "../api";
 import TasksList from "../components/TasksList";
-import type { Task } from "../types";
+import type { Task } from "../../../shared/types";
 
 const TaskListPage = () => {
     const [tasks, setTasks] = useState<Task[]>([]);
